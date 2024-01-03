@@ -34,16 +34,12 @@ export class AddNewTaskComponent implements OnInit {
 
   onSubmit() {
     if (this.taskForm.valid) {
-      debugger;
-      // ...
-
       const newTask = this.taskForm.value as TaskModel;
       this.taskService.addTask(newTask).subscribe(
         (response) => {
           alert('Task added successfully');
           console.log('Task added successfully:', response);
           this.router.navigate(['/']);
-          // You can redirect or perform other actions after successful form submission.
         },
         (error) => {
           alert('Error adding task');

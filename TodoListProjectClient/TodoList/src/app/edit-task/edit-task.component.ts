@@ -29,12 +29,10 @@ export class EditTaskComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger;
     this.editForm.patchValue(this.data);
   }
 
   onFormSubmit() {
-    debugger;
     if (this.editForm.valid) {
       if (!this.data) {
         this.taskService.addTask(this.editForm.value).subscribe({
