@@ -1,0 +1,67 @@
+<div class="row taskBody">
+  <div class="col-md-11">
+    <h2>Add New Task</h2>
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+      <div class="form-group element">
+        <label for="title">Task Title:</label>
+        <input
+          type="text"
+          id="title"
+          formControlName="title"
+          class="form-control"
+        />
+        <div
+          *ngIf="title?.hasError('required') && title?.touched"
+          class="text-danger"
+        >
+          Task title is required.
+        </div>
+      </div>
+
+      <div class="form-group element">
+        <label for="description">Task Description:</label>
+        <input
+          type="text"
+          id="description"
+          formControlName="description"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group element">
+        <label for="isCompleted">Is Completed:</label>
+        <input type="checkbox" id="isCompleted" formControlName="isCompleted" />
+      </div>
+
+      <div class="form-group element">
+        <label for="targetDate">Target Date:</label>
+        <input
+          type="date"
+          id="targetDate"
+          formControlName="targetDate"
+          class="form-control"
+        />
+        <!-- Add date-related validations if needed -->
+      </div>
+
+      <div class="form-group element">
+        <label for="userId">User ID:</label>
+        <input
+          type="number"
+          id="userId"
+          formControlName="userId"
+          class="form-control"
+        />
+        <!-- Add user-related validations if needed -->
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="taskForm.invalid"
+        class="btn btn-primary"
+      >
+        Add New Task
+      </button>
+    </form>
+  </div>
+</div>

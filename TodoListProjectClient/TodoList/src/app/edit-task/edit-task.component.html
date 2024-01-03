@@ -1,0 +1,56 @@
+<div mat-dialog-title>Edit Task</div>
+<form [formGroup]="editForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>id</mat-label>
+        <input matInput placeholder="id" formControlName="id" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>title</mat-label>
+        <input matInput placeholder="title" formControlName="title" />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>description</mat-label>
+        <input
+          matInput
+          placeholder="description"
+          formControlName="description"
+        />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-checkbox formControlName="isCompleted">Is Completed</mat-checkbox>
+    </div>
+
+    <div class="row">
+      <mat-form-field>
+        <mat-label>Target Date</mat-label>
+        <input formControlName="targetDate" matInput [matDatepicker]="picker" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>User</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="userId"
+          formControlName="userId"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button color="primary">{{ data ? "Update" : "Save" }}</button>
+    <button (click)="close()" mat-button color="warn">Cancel</button>
+  </div>
+</form>

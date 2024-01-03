@@ -1,0 +1,27 @@
+<div>
+  <h2 class="taskTitle">Task List</h2>
+
+  <div *ngIf="tasks.length === 0">No tasks available.</div>
+
+  <div>
+    <h3 class="incompleteTaskTitle">Incomplete Tasks</h3>
+    <div class="element" *ngFor="let task of tasks">
+      <app-task-card
+        *ngIf="!task.isCompleted"
+        [TaskModel]="task"
+      ></app-task-card>
+    </div>
+  </div>
+
+  <div class="completeTaskBody" *ngIf="tasks.length > 0">
+    <div>
+      <h3 class="completeTaskTitle">Completed Tasks</h3>
+      <div class="element" *ngFor="let task of tasks">
+        <app-task-card
+          *ngIf="task.isCompleted"
+          [TaskModel]="task"
+        ></app-task-card>
+      </div>
+    </div>
+  </div>
+</div>
